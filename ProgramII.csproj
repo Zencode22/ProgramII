@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- Build a console executable -->
+    <OutputType>Exe</OutputType>
+
+    <!-- Target .NET 8 – the current LTS version (supported until 2026) -->
+    <TargetFramework>net8.0</TargetFramework>
+
+    <EnableDefaultCompileItems>true</EnableDefaultCompileItems>
+
+    <!-- Implicit usings and nullable reference types are useful defaults -->
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>
