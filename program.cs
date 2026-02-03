@@ -1,9 +1,8 @@
 /*
  * Craft System
- * Your Name
- * Application created in PROG 201 Programming I
- * With code demos from instructor
- * Spring 2025
+ * Connor Lonergan
+ * Application created in PROG 305-01 Programming II
+ * Fall 2026
  */
 
 using System;
