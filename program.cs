@@ -7,44 +7,33 @@
 
 using System;
 using System.Linq;
+using CraftingEngine.Entities;   // new entity types
+using CraftingEngine.Test;      // test‑data loader
 
 namespace CraftingEngine
 {
-    // --------------------------------------------------------------
-    // Public entry‑point class – required for the .NET runtime.
-    // --------------------------------------------------------------
     public static class Program
     {
-        // Public static Main – the canonical entry point.
-        // You may keep the parameterless signature or accept args.
         public static void Main(string[] args)
         {
-            // Load recipes (they reference the shared GameItems)
-            var recipes = RecipeCatalog.LoadStarterRecipes();
+            // Load the combined recipe list (original starters + temporary test recipe)
+            var recipes = TestData.LoadTestRecipes();
+
+            // Create a player (holds his own inventory)
+            var player = new Player("Connor");
 
             Console.WriteLine("=== All Recipes ===");
             foreach (var r in recipes) Console.WriteLine(r);
             Console.WriteLine();
 
-            // Populate inventory using the same Item instances
-            var inventory = new Inventory();
-            inventory.Add(GameItems.Milk.Id.ToString(),          10m);
-            inventory.Add(GameItems.ChocolateChip.Id.ToString(),  2m);
-            inventory.Add(GameItems.Flour.Id.ToString(),         5m);
-            inventory.Add(GameItems.Water.Id.ToString(),         5m);
-            inventory.Add(GameItems.Yeast.Id.ToString(),         0.1m);
-            inventory.Add(GameItems.Herb.Id.ToString(),          5m);
-            inventory.Add(GameItems.Sugar.Id.ToString(),         1m); // needed for Sweet Hot Chocolate
-
-            // Attempt to craft each recipe
             foreach (var recipe in recipes)
             {
                 Console.WriteLine($"Attempting to craft: {recipe.Name}");
-                if (recipe.Craft(inventory))
+                if (recipe.Craft(player.Inventory))
                 {
                     var res = recipe.Result;
                     Console.WriteLine(
-                        $"  SUCCESS – you now have {inventory.GetAmount(res.Item.Id.ToString())} {res.Item.Unit} {res.Item.Name}");
+                        $"  SUCCESS – you now have {player.Inventory.GetAmount(res.Item.Id.ToString())} {res.Item.Unit} {res.Item.Name}");
                 }
                 else
                 {
@@ -53,9 +42,8 @@ namespace CraftingEngine
                 Console.WriteLine();
             }
 
-            // Final inventory snapshot (human‑readable)
             Console.WriteLine("=== Final Inventory ===");
-            foreach (var kvp in inventory.Contents.Where(k => k.Value > 0))
+            foreach (var kvp in player.Inventory.Contents.Where(k => k.Value > 0))
             {
                 if (ItemRegistry.TryGet(Guid.Parse(kvp.Key), out var item))
                 {
@@ -63,7 +51,6 @@ namespace CraftingEngine
                 }
                 else
                 {
-                    // Should never happen if the registry is complete
                     Console.WriteLine($"{kvp.Key}: {kvp.Value}");
                 }
             }

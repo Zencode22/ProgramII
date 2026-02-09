@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\conno\\Documents\\GitHub\\Phaser_3\\ProgramII\\ProgramII.csproj": {}
+    "c:\\Users\\conno\\Documents\\GitHub\\Phaser_3\\ProgramII\\ProgramII.csproj": {}
   },
   "projects": {
-    "C:\\Users\\conno\\Documents\\GitHub\\Phaser_3\\ProgramII\\ProgramII.csproj": {
+    "c:\\Users\\conno\\Documents\\GitHub\\Phaser_3\\ProgramII\\ProgramII.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\conno\\Documents\\GitHub\\Phaser_3\\ProgramII\\ProgramII.csproj",
+        "projectUniqueName": "c:\\Users\\conno\\Documents\\GitHub\\Phaser_3\\ProgramII\\ProgramII.csproj",
         "projectName": "ProgramII",
-        "projectPath": "C:\\Users\\conno\\Documents\\GitHub\\Phaser_3\\ProgramII\\ProgramII.csproj",
+        "projectPath": "c:\\Users\\conno\\Documents\\GitHub\\Phaser_3\\ProgramII\\ProgramII.csproj",
         "packagesPath": "C:\\Users\\conno\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\conno\\Documents\\GitHub\\Phaser_3\\ProgramII\\obj\\",
+        "outputPath": "c:\\Users\\conno\\Documents\\GitHub\\Phaser_3\\ProgramII\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\conno\\AppData\\Roaming\\NuGet\\NuGet.Config"
