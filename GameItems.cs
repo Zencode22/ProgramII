@@ -2,7 +2,6 @@ namespace CraftingEngine
 {
     public static class GameItems
     {
-        // Helper that registers the item and returns it in one expression
         private static Item Register(Item item)
         {
             ItemRegistry.Register(item);
@@ -18,6 +17,6 @@ namespace CraftingEngine
         public static readonly Item Bread         = Register(new Item("Bread",         "loaf",   1.50m));
         public static readonly Item Herb          = Register(new Item("Herb",          "pieces", 0.40m));
         public static readonly Item HealingPotion = Register(new Item("Healing Potion","bottle", 3.00m));
-        public static readonly Item Sugar         = Register(new Item("Sugar",         "cups",   0.60m)); // new material
+        public static readonly Item Sugar         = Register(new Item("Sugar",         "cups",   0.60m));
     }
 }

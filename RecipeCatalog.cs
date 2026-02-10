@@ -6,7 +6,6 @@ namespace CraftingEngine
     {
         public static List<Recipe> LoadStarterRecipes()
         {
-            // ----- Aliases for readability -----
             var m  = GameItems.Milk;
             var cc = GameItems.ChocolateChip;
             var hc = GameItems.HotChocolate;
@@ -16,55 +15,50 @@ namespace CraftingEngine
             var b  = GameItems.Bread;
             var h  = GameItems.Herb;
             var hp = GameItems.HealingPotion;
-            var s  = GameItems.Sugar;   // new material
+            var s  = GameItems.Sugar;
 
-            // ----- 1️⃣ Hot Chocolate -----
             var hotChocolateRecipe = new Recipe(
                 name: "Hot Chocolate",
-                result: new Result(hc, 12m),   // 12 ounces
+                result: new Result(hc, 12m),
                 ingredients: new[]
                 {
-                    new Ingredient(m, 4m),       // 4 cups Milk
-                    new Ingredient(cc, 0.5m)     // ½ cup Chocolate Chips
+                    new Ingredient(m, 4m),
+                    new Ingredient(cc, 0.5m)
                 },
                 isStarter: true);
 
-            // ----- 2️⃣ Bread -----
             var breadRecipe = new Recipe(
                 name: "Bread",
-                result: new Result(b, 1m),      // 1 loaf
+                result: new Result(b, 1m),
                 ingredients: new[]
                 {
-                    new Ingredient(f, 3m),       // 3 cups Flour
-                    new Ingredient(w, 1.5m),     // 1.5 cups Water
-                    new Ingredient(y, 0.02m)     // 0.02 cup Yeast
+                    new Ingredient(f, 3m), 
+                    new Ingredient(w, 1.5m),
+                    new Ingredient(y, 0.02m)
                 },
                 isStarter: true);
 
-            // ----- 3️⃣ Healing Potion -----
             var potionRecipe = new Recipe(
                 name: "Healing Potion",
-                result: new Result(hp, 1m),     // 1 bottle
+                result: new Result(hp, 1m),
                 ingredients: new[]
                 {
-                    new Ingredient(h, 2m),       // 2 pieces Herb
-                    new Ingredient(w, 0.5m)      // ½ cup Water
+                    new Ingredient(h, 2m),
+                    new Ingredient(w, 0.5m)
                 },
                 isStarter: true);
 
-            // ----- 4️⃣ Sweet Hot Chocolate (uses Sugar) -----
             var sweetHotChocolateRecipe = new Recipe(
                 name: "Sweet Hot Chocolate",
-                result: new Result(hc, 12m),    // same result item, same amount
+                result: new Result(hc, 12m),
                 ingredients: new[]
                 {
-                    new Ingredient(m, 4m),       // 4 cups Milk
-                    new Ingredient(cc, 0.5m),    // ½ cup Chocolate Chips
-                    new Ingredient(s, 0.25m)     // ¼ cup Sugar (new material)
+                    new Ingredient(m, 4m),
+                    new Ingredient(cc, 0.5m),
+                    new Ingredient(s, 0.25m)
                 },
-                isStarter: false); // not part of the initial three
+                isStarter: false);
 
-            // Return the full list (three starters + the new Sweet recipe)
             return new List<Recipe>
             {
                 hotChocolateRecipe,

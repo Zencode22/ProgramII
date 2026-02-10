@@ -3,9 +3,7 @@ using System.Globalization;
 
 namespace CraftingEngine.Utilities
 {
-    /// <summary>
-    /// Collection of pure conversion helpers.
-    /// </summary>
+
     public static class ParseUtils
     {
         public static int ConvertStringToInteger(string input)
@@ -30,7 +28,6 @@ namespace CraftingEngine.Utilities
                                CultureInfo.InvariantCulture);
         }
 
-        // ---------- Additional helpers you might find useful ----------
         public static decimal[] ConvertCsvToDecimalArray(string csv)
         {
             if (string.IsNullOrWhiteSpace(csv))

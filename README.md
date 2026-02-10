@@ -1,17 +1,18 @@
-# ProgramII - Crafting System
+# ProgramII - Interactive Crafting System
 
 ## Project Information
 - **Course:** PROG 305-01 Programming II
 - **Author:** Connor Lonergan
 - **Term:** Fall 2026
+- **Version:** 2.0 - Interactive Trading & Crafting
 
-## 📊 UML Class Diagram
+## 📊 Updated UML Class Diagram
 
 ```plantuml
 @startuml
-' Crafting Engine UML Class Diagram
+' Interactive Crafting System UML Class Diagram
 ' For github.com/Zencode22/ProgramII
-' Created with DeepSeek & Proton Lumo AI assistance
+' Created with DeepSeek AI assistance
 ' Educational project for PROG 305-01 Programming II
 
 skinparam class {
@@ -24,19 +25,21 @@ skinparam class {
     MethodFontSize 13
 }
 
-title ProgramII - Crafting Engine Class Diagram\nPROG 305-01 Programming II - Fall 2026
+title ProgramII - Interactive Crafting System\nPROG 305-01 Programming II - Fall 2026
 
 note left
   <b>Author:</b> Connor Lonergan
   <b>Course:</b> PROG 305-01 Programming II
   <b>Term:</b> Fall 2026
+  <b>Version:</b> 2.0 - Interactive System
   <b>AI Assistance:</b> DeepSeek
   <b>Disclaimer:</b> Educational project
-  <b>Folder Structure:</b>
-  - Root: Core classes
-  - Test/: TestData class
-  - Entities/: Person, Player, Trader
-  - Utilities/: ParseUtils class
+  <b>Game Flow:</b>
+  1. Player starts with empty inventory
+  2. Trader has random recipe ingredients
+  3. Player requests ingredients from trader
+  4. If trader has items: craft & end game
+  5. If not: loop with remaining recipes
 end note
 
 ' Enums
@@ -157,21 +160,15 @@ abstract class Person {
     +string Name { get; }
     +Inventory Inventory { get; }
     --
-    #Person(string)
+    #Person(string, bool)
 }
 
 class Player {
-    +Player(string)
+    +Player(string) : base(name, false)
 }
 
 class Trader {
-    +Trader(string)
-}
-
-' Test (in Test/ folder)
-class TestData {
-    +static CreateStarterKitRecipe() : Recipe
-    +static LoadTestRecipes() : List<Recipe>
+    +Trader(string, Recipe) : base(name, true)
 }
 
 ' Utilities (in Utilities/ folder)
@@ -185,15 +182,27 @@ class ParseUtils {
 }
 
 class Program {
+    -static Random _random
     +static Main(string[]) : void
+    -static DisplayPlayerInventory(Inventory) : void
+    -static DisplayRecipes(List<Recipe>, Inventory) : void
+    -static GetRecipeChoice(List<Recipe>) : int
 }
 
 note top of Program
   /*
-  * Craft System
+  * Interactive Crafting System
   * Connor Lonergan
-  * Application created in PROG 305-01 Programming II
+  * PROG 305-01 Programming II
   * Fall 2026
+  *
+  * Game Flow:
+  * 1. Player starts with empty inventory
+  * 2. Trader gets random recipe ingredients
+  * 3. Player selects recipe to request
+  * 4. Trader checks inventory
+  * 5. If successful: craft & end
+  * 6. If failed: remove recipe & loop
   */
 end note
 
@@ -213,21 +222,16 @@ Person <|-- Player
 Person <|-- Trader
 Person --* Inventory : owns
 
-' Test Data Relationships
-TestData ..> Recipe : creates
-TestData ..> RecipeCatalog : uses
-TestData ..> GameItems : references
-Program ..> TestData : uses
-
-' Utility Usage (indirect)
-TestData ..> ParseUtils : may use
-Program ..> ParseUtils : may use
-
 ' Program Relationships
 Program ..> RecipeCatalog : uses
 Program ..> Inventory : uses
 Program ..> GameItems : references
 Program ..> Player : creates
+Program ..> Trader : creates with Recipe
+Program ..> Random : uses for selection
+
+' Utility Usage
+Program ..> ParseUtils : may use
 
 ' Notes
 note right of ItemRegistry
@@ -245,27 +249,29 @@ note bottom of GameItems
     all items automatically
 end note
 
-note right of Person
-    Abstract base class
-    Initializes with starter items:
-    - 10 Milk
-    - 2 Chocolate Chips
-    - 1 Sugar
+note right of Player
+    Starts with empty inventory
+    Must get ingredients from trader
+    to craft anything
 end note
 
-note bottom of TestData
-    Temporary test class
-    Creates starter recipes
-    Located in Test/ folder
+note right of Trader
+    Constructor takes Recipe parameter
+    Gets double ingredients for that recipe
+    Also gets common items (Milk, Water)
+    Used for trading with player
 end note
 
-note bottom of ParseUtils
-    Utility class for parsing
-    Located in Utilities/ folder
+note right of Program
+    Main Game Loop Logic:
+    1. Initialize with random trader recipe
+    2. Display player inventory (empty)
+    3. Show available recipes
+    4. Player selects recipe
+    5. Trader checks inventory
+    6. If has all: transfer & craft → END
+    7. If not: remove recipe → LOOP
+    8. Repeat until success or no recipes
 end note
-@enduml
-note bottom of GameItems
-    Static initializer registers
-    all items automatically
-end note
+
 @enduml

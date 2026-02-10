@@ -35,8 +35,6 @@ namespace CraftingEngine
             Rarity      = rarity;
             Description = description;
         }
-
-        // IEquatable<Item> implementation
         public bool Equals(Item? other)
         {
             if (other is null) return false;
@@ -47,7 +45,6 @@ namespace CraftingEngine
         public override int GetHashCode() => Id.GetHashCode();
         public override string ToString() => $"{Name} ({Unit})";
 
-        // Optional helper for discounts
         public void ApplyDiscount(decimal percent)
         {
             if (percent < 0m || percent > 100m)
