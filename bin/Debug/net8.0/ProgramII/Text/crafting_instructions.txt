@@ -1,0 +1,51 @@
+============================================================
+           CRAFTING INSTRUCTIONS
+============================================================
+
+RECIPE: Bread
+----------------------------------------
+
+🎯 CRAFTING RESULT:
+   1 loaf Bread
+
+📦 INGREDIENTS REQUIRED:
+   • 3 cups Flour
+   • 1.5 cups Water
+   • 0.02 cup Yeast
+
+📋 STEP-BY-STEP INSTRUCTIONS:
+
+   Step 1: Gather all required ingredients:
+      - 3 cups of Flour
+      - 1.5 cups of Water
+      - 0.02 cup of Yeast
+
+   Step 2: Verify you have all ingredients in your inventory
+      (The trader has provided these to you)
+
+   Step 3: Prepare your crafting workspace
+      Make sure all ingredients are within reach
+
+   Step 4: Combine the ingredients:
+      - Mix 3 cups of Flour and 0.02 cup of Yeast in a large bowl
+      - Gradually add 1.5 cups of Water
+      - Knead the dough for 10 minutes
+      - Let rise for 1 hour
+      - Bake at 375°F for 30 minutes
+
+   Step 5: Complete the crafting process
+      Use the 'Craft' option in the game to finalize
+
+💡 CRAFTING TIPS:
+   • This recipe yields 1 loaf Bread
+   • Make sure you have enough inventory space for the result
+   • The quality of ingredients affects the final product
+   • Practice makes perfect!
+
+============================================================
+           HAPPY CRAFTING!
+============================================================
+
+Instructions generated on: 2/17/2026 13:49:35
+Recipe ID: 0d087302-7f40-4783-80e0-52dacf27c44a
+File location: C:\Users\conno\Documents\GitHub\Codes\ProgramII\bin\Debug\net8.0\ProgramII\Text\crafting_instructions.txt
